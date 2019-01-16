@@ -1,0 +1,10 @@
+td {
+  border:1px solid orange;
+  width: 25px;
+  height: 25px;
+  color: black;
+  background-color: orange;
+  border-style: outset;
+  text-align: center;
+  vertical-align: middle;
+}
