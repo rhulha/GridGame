@@ -1,12 +1,13 @@
-export class GridGame<T> {
-  table: HTMLElement;
-  customTiles = new Array<T>();
+export class GridGame {
 
-  ac(type_: string, father: HTMLElement): HTMLElement {
+  ac(type_, father) {
     return father.appendChild(document.createElement(type_));
   }
 
-  constructor(public width: number, public height: number, callback: (i: number) => T) {
+  constructor(width, height, callback) {
+    this.width=width;
+    this.height = height;
+    this.customTiles = new Array();
     document.body.oncontextmenu = function () { return false };
     this.table = this.ac("table", document.body);
     for (var y = 0; y < height; y++) {
@@ -19,15 +20,15 @@ export class GridGame<T> {
     }
   }
 
-  getTD(x: number, y: number): HTMLElement {
+  getTD(x, y) {
     return this.table.getElementsByTagName("tr")[y].getElementsByTagName("td")[x];
   }
 
-  getTile(x: number, y: number): T {
+  getTile(x, y) {
     return this.customTiles[x + y * this.width];
   }
 
-  getAllNeighbours(x: number, y: number): number[][] {
+  getAllNeighbours(x, y){
     var array1 = [x - 1, x, x + 1].map(x => [y - 1, y, y + 1].map(y => [x, y]));
     var array2 = Array.prototype.concat.apply([], array1); // flatMap
     array2.splice(4, 1); // remove center [x,y] since it is not a neighbour
@@ -35,7 +36,7 @@ export class GridGame<T> {
     return array3;
   }
 
-  reveal(x: number, y: number, backgroundColor: string, text: string, borderStyle = 'inset') {
+  reveal(x, y, backgroundColor, text, borderStyle = 'inset') {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return;
     var td = this.getTD(x, y);
@@ -44,7 +45,7 @@ export class GridGame<T> {
     td.innerHTML = text;
   }
 
-  setText(x: number, y: number, text: string) {
+  setText(x, y, text) {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return;
     var td = this.getTD(x, y);
@@ -59,10 +60,10 @@ export class GridGame<T> {
     }
   }
 
-  onClick(callback: (x: number, y: number, button: number) => void) {
+  onClick(callback) {
     var that = this;
-    this.table.addEventListener("mousedown", function (event: MouseEvent) {
-      var td = event.target as HTMLElement;
+    this.table.addEventListener("mousedown", function (event) {
+      var td = event.target;
       if (td.tabIndex >= 0) {
         callback(td.tabIndex % that.width, td.tabIndex / that.height | 0, event.button);
       }

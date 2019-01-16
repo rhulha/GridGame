@@ -1,22 +1,21 @@
-import { GridGame } from './GridGame';
+import { GridGame } from './GridGame.js';
 
 class Tile {
-  counter: number;
-  constructor(public kind: string) { }
+  constructor(kind) {this.kind=kind}
 }
 
-var gg = new GridGame(9, 9, (i: number) => new Tile(i++ < 10 ? '*' : ''));
+var gg = new GridGame(9, 9, (i) => new Tile(i++ < 10 ? '*' : ''));
 gg.shuffleTiles();
 
-function isBomb(x: number, y: number): boolean {
+function isBomb(x, y) {
   return gg.getTile(x, y).kind == '*';
 }
 
-function countBombsAround(x: number, y: number): number {
+function countBombsAround(x, y) {
   return gg.getAllNeighbours(x,y).filter(([x,y]) => isBomb(x,y)).length;
 }
 
-function revealAround(x: number, y: number) {
+function revealAround(x, y) {
   var tile = gg.getTile(x, y);
   if (tile.counter != counter) {
     tile.counter = counter;
@@ -24,7 +23,7 @@ function revealAround(x: number, y: number) {
   }
 }
 
-function check(x: number, y: number) {
+function check(x, y) {
   if (isBomb(x, y)) {
     gg.reveal(x, y, 'red', "*");
   } else {
