@@ -6,7 +6,7 @@ export class GridGame<T> {
     return father.appendChild(document.createElement(type_));
   }
 
-  constructor(public width: number, public height: number, callback: (i: number) => T) {
+  constructor(public width: number, public height: number, callback?: (i: number) => T) {
     document.body.oncontextmenu = function () { return false };
     this.table = this.ac("table", document.body);
     for (var y = 0; y < height; y++) {
@@ -14,7 +14,8 @@ export class GridGame<T> {
       for (var x = 0; x < width; x++) {
         var td = this.ac("td", tr);
         td.tabIndex = x + y * width; // lil hijack
-        this.customTiles.push(callback(td.tabIndex));
+        if( callback)
+          this.customTiles.push(callback(td.tabIndex));
       }
     }
   }
@@ -25,6 +26,16 @@ export class GridGame<T> {
 
   getTile(x: number, y: number): T {
     return this.customTiles[x + y * this.width];
+  }
+
+  toggleClass(x: number, y: number, class_) {
+    this.getTD(x, y).classList.toggle(class_);
+  }
+
+  toggleButton(x: number, y: number) {
+    this.toggleClass(x,y,"off");
+    //bc = window.getComputedStyle(td).backgroundColor;
+    //this.getTD(x,y).style.borderStyle = (bs=='inset'?'outset':'inset');
   }
 
   getAllNeighbours(x: number, y: number): number[][] {
@@ -57,6 +68,13 @@ export class GridGame<T> {
       var j = Math.floor(Math.random() * (i + 1));
       [a[i], a[j]] = [a[j], a[i]];
     }
+  }
+
+  print(txt) {
+    var content = document.createTextNode("["+txt+"]");
+    var div = document.createElement('div');
+    div.appendChild(content);
+    document.body.appendChild(div);
   }
 
   onClick(callback: (x: number, y: number, button: number) => void) {
