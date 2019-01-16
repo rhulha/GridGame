@@ -38,12 +38,17 @@ export class GridGame<T> {
     //this.getTD(x,y).style.borderStyle = (bs=='inset'?'outset':'inset');
   }
 
-  getAllNeighbours(x: number, y: number): number[][] {
+  getAllNeighbours(x: number, y: number, includeThyself=false): number[][] {
     var array1 = [x - 1, x, x + 1].map(x => [y - 1, y, y + 1].map(y => [x, y]));
     var array2 = Array.prototype.concat.apply([], array1); // flatMap
-    array2.splice(4, 1); // remove center [x,y] since it is not a neighbour
-    var array3 = array2.filter(([x,y])=>x>=0&&x<=8&&y>=0&&y<=8)
+    if( !includeThyself)
+      array2.splice(4, 1); // remove center [x,y] since it is not a neighbour
+    var array3 = array2.filter(([x,y])=>x>=0&&x<this.width&&y>=0&&y<this.height)
     return array3;
+  }
+
+  getAllNeighboursTD(x: number, y: number, includeThyself=false): HTMLElement[] {
+    return this.getAllNeighbours(x,y,includeThyself).map( ([x,y]) => this.getTD(x,y));
   }
 
   reveal(x: number, y: number, backgroundColor: string, text: string, borderStyle = 'inset') {
