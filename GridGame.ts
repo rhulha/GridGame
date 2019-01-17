@@ -51,6 +51,25 @@ export class GridGame<T> {
     return this.getAllNeighbours(x,y,includeThyself).map( ([x,y]) => this.getTD(x,y));
   }
 
+  removeAllNeighbours(x: number, y: number, includeThyself=false) {
+    this.getAllNeighboursTD(x,y,includeThyself).forEach((td) => td.style.visibility = "hidden");
+  }
+
+  hide(x: number, y: number) {
+    var td = this.getTD( x,y );
+    td.style.backgroundColor = "white";
+    //td.style.borderStyle = "";
+  }
+
+  show(x,y) {
+    this.getTD(x, y).style.backgroundColor = null;
+  }
+
+  isHidden(x,y) {
+    // return this.getTD(x, y).classList.length != 0
+    return this.getTD(x, y).style.backgroundColor == "white";
+  }
+
   reveal(x: number, y: number, backgroundColor: string, text: string, borderStyle = 'inset') {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return;
