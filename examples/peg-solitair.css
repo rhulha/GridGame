@@ -1,0 +1,14 @@
+td {
+  border:1px outset orange;
+  width: 25px;
+  height: 25px;
+  color: black;
+  background-color: orange;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td.off {
+  background-color: darkorange;
+  border-style: inset;
+}

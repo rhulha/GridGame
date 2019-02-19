@@ -33,6 +33,8 @@ export class GridGame<T> {
   }
 
   toggleButton(x: number, y: number) {
+    if (x < 0 || x >= this.width || y < 0 || y >= this.height)
+      return;
     this.toggleClass(x,y,"off");
     //bc = window.getComputedStyle(td).backgroundColor;
     //this.getTD(x,y).style.borderStyle = (bs=='inset'?'outset':'inset');
