@@ -32,6 +32,12 @@ export class GridGame<T> {
     this.getTD(x, y).classList.toggle(class_);
   }
 
+  isPressed(x: number, y: number) {
+    if (x < 0 || x >= this.width || y < 0 || y >= this.height)
+      return true;
+    return this.getTD(x, y).classList.contains("off");
+  }
+
   toggleButton(x: number, y: number) {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return;
@@ -81,11 +87,24 @@ export class GridGame<T> {
     td.innerHTML = text;
   }
 
+  setTextForList(list: [[number, number]], text: string) {
+    for( var tuple of list) {
+      this.setText( tuple[0], tuple[1], text);
+    }
+  }
+
   setText(x: number, y: number, text: string) {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return;
     var td = this.getTD(x, y);
     td.innerHTML = text;
+  }
+
+  getText(x: number, y: number): string {
+    if (x < 0 || x >= this.width || y < 0 || y >= this.height)
+      return;
+    var td = this.getTD(x, y);
+    return td.innerHTML;
   }
 
   shuffleTiles() {
