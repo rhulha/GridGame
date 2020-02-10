@@ -6,7 +6,7 @@ export class GridGame<T> {
     return father.appendChild(document.createElement(type_));
   }
 
-  constructor(public width: number, public height: number, callback?: (i: number) => T) {
+  constructor(public width: number, public height: number, callback?: (i: number, x:number, y:number, td: HTMLElement) => T) {
     document.body.oncontextmenu = function () { return false };
     this.table = this.ac("table", document.body);
     for (var y = 0; y < height; y++) {
@@ -15,7 +15,7 @@ export class GridGame<T> {
         var td = this.ac("td", tr);
         td.tabIndex = x + y * width; // lil hijack
         if( callback)
-          this.customTiles.push(callback(td.tabIndex));
+          this.customTiles.push(callback(td.tabIndex, x, y, td));
       }
     }
   }
@@ -28,11 +28,11 @@ export class GridGame<T> {
     return this.customTiles[x + y * this.width];
   }
 
-  toggleClass(x: number, y: number, class_) {
+  toggleClass(x: number, y: number, class_: string) {
     this.getTD(x, y).classList.toggle(class_);
   }
 
-  setClass(x: number, y: number, class_) {
+  setClass(x: number, y: number, class_: string) {
     this.getTD(x, y).className = class_;
   }
 
