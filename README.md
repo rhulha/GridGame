@@ -13,8 +13,18 @@ GridGame contains the following helper methods:
  * reveal(x: number, y: number, backgroundColor: string, text: string) => visually reveal a tile
  * setText(x: number, y: number, text: string) => only set the text of a tile, useful for markings
  * shuffleTiles() => shuffle the custom information tiles so that their final location is random
- 
- 
+
+# It lets you create much with just a few lines of code:
+
+ * Minesweeper: 45 lines of code
+ * Sokoban: 67 lines of code
+ * Tic-tac-toe with decision tree AI: 137 lines of code
+ * Chess with Toledo Nanochess AI: 70 lines of code
+ * Peg-Solitair: 36 lines of code
+ * Lightsout: 25 lines of code
+ * Tetris: unfinished
+
+
 # Here are some demos:
 
 ## Minesweeper
@@ -27,7 +37,8 @@ https://stackblitz.com/edit/typescript-minesweeper
 
 ![Sokoban](https://i.imgur.com/0TZf71f.png)
 
-https://stackblitz.com/edit/sokoban
+https://stackblitz.com/edit/sokoban  
+https://stackblitz.com/edit/sokoban-level-editor
 
 ## Tic-tac-toe
 
@@ -51,7 +62,8 @@ https://stackblitz.com/edit/typescript-peg-solitair
 
 <img src="https://i.imgur.com/lqcTxaY.png" width="220" height="220">
 
-https://typescript-lightsout.stackblitz.io/
+https://stackblitz.com/edit/typescript-lightsout  
+Play: https://typescript-lightsout.stackblitz.io/
 
 ## Tetris (unfinished)
 
