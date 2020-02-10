@@ -32,6 +32,10 @@ export class GridGame<T> {
     this.getTD(x, y).classList.toggle(class_);
   }
 
+  setClass(x: number, y: number, class_) {
+    this.getTD(x, y).className = class_;
+  }
+
   isPressed(x: number, y: number) {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return true;
@@ -47,7 +51,7 @@ export class GridGame<T> {
   }
 
   getAllNeighbours(x: number, y: number, includeThyself=false): number[][] {
-    var array1 = [x - 1, x, x + 1].map(x => [y - 1, y, y + 1].map(y => [x, y]));
+    var array1 = [y - 1, y, y + 1].map(y => [x - 1, x, x + 1].map(x => [x, y]));
     var array2 = Array.prototype.concat.apply([], array1); // flatMap
     if( !includeThyself)
       array2.splice(4, 1); // remove center [x,y] since it is not a neighbour
@@ -61,6 +65,17 @@ export class GridGame<T> {
 
   removeAllNeighbours(x: number, y: number, includeThyself=false) {
     this.getAllNeighboursTD(x,y,includeThyself).forEach((td) => td.style.visibility = "hidden");
+  }
+
+  remove(x: number, y: number) {
+    this.getTD(x,y).style.visibility = "hidden";
+  }
+
+  setHidden(x: number, y: number, trueOrFalse: boolean) {
+    if(trueOrFalse)
+      this.hide(x,y);
+    else
+      this.show(x,y);
   }
 
   hide(x: number, y: number) {
@@ -115,6 +130,15 @@ export class GridGame<T> {
     }
   }
 
+  forEachTD(callback: (x: number, y: number, td: HTMLElement) => void) {
+    for (var y = 0; y < this.height; y++) {
+      for (var x = 0; x < this.width; x++) {
+        if( callback)
+          callback( x, y, this.getTD(x,y));
+      }
+    }
+  }
+
   print(txt) {
     var content = document.createTextNode("["+txt+"]");
     var div = document.createElement('div');
@@ -127,7 +151,7 @@ export class GridGame<T> {
     this.table.addEventListener("mousedown", function (event: MouseEvent) {
       var td = event.target as HTMLElement;
       if (td.tabIndex >= 0) {
-        callback(td.tabIndex % that.width, td.tabIndex / that.height | 0, event.button);
+        callback(td.tabIndex % that.width, td.tabIndex / that.width | 0, event.button);
       }
     });
   }
@@ -135,4 +159,21 @@ export class GridGame<T> {
 
 export function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+export function arrayEquals( array1, array2) {
+    if (!array1||!array2||(array1.length != array2.length))
+        return false;
+    for (var i = 0, l=array1.length; i < l; i++) {
+        // Check if we have nested arrays
+        if (array1[i] instanceof Array && array2[i] instanceof Array) {
+            // recurse into the nested arrays
+            if (!arrayEquals(array1[i], array2[i]))
+                return false;       
+        } else if (array1[i] != array2[i]) { 
+            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+            return false;   
+        }           
+    }       
+    return true;
 }
