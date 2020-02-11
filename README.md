@@ -70,7 +70,7 @@ https://stackblitz.com/edit/typescript-tetris
 # GridGame contains the following primary methods:
 
 ### getTile(x,y)
-Get back your custom information class instance that can contains things like counter or kind
+Get back your custom information class instance that can contains things like counter or kind.
 
 ### setClass(x: number, y: number, class: string)
 Set the HTML style sheet class for a tile (td).
@@ -93,7 +93,7 @@ Returns true if x or y are out of bounds (this helps some demos work better)
 Returns true if the <td> classList contains "off".
 
 ### getAllNeighbours(x: number, y: number, includeThyself=false): number[][]
-Returns an array of 8 or 9 tuples with the x,y coordinates of a tile and its surrounding neighbours.
+Returns an array of 8 or 9 tuples with the x,y coordinates of a tile and its surrounding neighbours.  
 It starts top left and ends bottom right.
 
 ### remove(x: number, y: number)
@@ -106,15 +106,15 @@ calls getAllNeighboursTD(x,y,includeThyself).forEach((td) => td.style.visibility
 calls getTD( x,y ).style.backgroundColor = trueOrFalse ? "white" : null
 
 ### hide(x: number, y: number)
-calls getTD( x,y ).style.backgroundColor = "white".
+calls getTD( x,y ).style.backgroundColor = "white".  
 The idea here is to make the tile disappear on a white page.
 
 ### show(x,y)
-calls getTD( x,y ).style.backgroundColor = null.
+calls getTD( x,y ).style.backgroundColor = null.  
 The idea here is to make the tile use the style from the style class definition and usually reappear.
 
 ### isHidden(x,y)
-return this.getTD(x, y).style.backgroundColor == "white";
+return this.getTD(x, y).style.backgroundColor == "white";  
 Note: Working on the Minesweeper demo made me realize that this method might not be named well...
 
 ### reveal(x: number, y: number, backgroundColor: string, text: string, borderStyle = 'inset')
@@ -123,6 +123,7 @@ Sets:
  * td.style.backgroundColor = backgroundColor;
  * td.style.borderStyle = borderStyle;
  * td.innerHTML = text;
+
 Can be used to show a hidden tile secret (like in Minesweeper).
 
 ### setText(x: number, y: number, text: string) 
@@ -138,7 +139,7 @@ return td.innerHTML
 Randomizes the tile class instances using [Fishers-Yates](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
 
 ### getRandomInt(min: number, max: number): number
-returns and integer number between min and max. BOTH LIMITS ARE INCLUSIVE.
+returns an integer number between min and max. BOTH LIMITS ARE INCLUSIVE.
 
 ### arrayEquals( array1, array2)
 A nice array equals method I found on Stackoverflow.
