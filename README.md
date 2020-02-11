@@ -94,7 +94,10 @@ Returns true if the <td> classList contains "off".
 
 ### getAllNeighbours(x: number, y: number, includeThyself=false): number[][]
 Returns an array of 8 or 9 tuples with the x,y coordinates of a tile and its surrounding neighbours.  
-It starts top left and ends bottom right.
+It starts top left and ends bottom right.  
+Why does it return x,y coordinates and not simply the tile itself ?  
+Because a tile is not guaranteed to have the x,y coordinates.  
+So this way it is guaranteed that the caller has acceess to both.
 
 ### remove(x: number, y: number)
 calls getTD(x,y).style.visibility = "hidden";
