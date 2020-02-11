@@ -1,16 +1,16 @@
 # GridGame
 A TypeScript class that makes it easy to create grid based games.
 
-GridGame is a TypeScript helper class that creates a playing field.
-It needs to know the amount of tiles you want horizontally and vertically.
-It also supports a function that it can call that will set custom information that the game needs per tile.
-For example a click counter or a secret that lies beneath the tile.
-For Minesweeper the secret would be the kind of the tile: Is it a bomb or not.
+GridGame is a TypeScript helper class that creates a playing field.  
+It needs to know the amount of tiles you want horizontally and vertically.  
+It also supports a function that it can call that will set custom information that the game needs per tile.  
+For example a click counter or a secret that lies beneath the tile.  
+For Minesweeper the secret would be the kind of the tile: Is it a bomb or not.  
  
 GridGame contains the following helper methods:
-(see end of document)
+(see [end of document](#gridgame-contains-the-following-primary-methods))
 
-# It lets you create much with just a few lines of code:
+# It lets you create a lot with just a few lines of code:
 
  * Minesweeper: 45 lines of code
  * Sokoban: 67 lines of code
