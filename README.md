@@ -70,11 +70,15 @@ https://stackblitz.com/edit/typescript-tetris
 # GridGame contains the following primary methods:
 
 ### Usage:
-import { GridGame } from './GridGame';
+    import { GridGame } from './GridGame';
+    var gg = new GridGame(5, 5);
+    gg.onClick(function click(x, y) {
+      gg.toggleButton(x,y);
+    });
 
-### Constructor
-var gg = new GridGame(5, 5);  
 This will create a table with 5 rows and 5 columns.  
+If you click on a tile it will change color and looks slightly.  
+Just like a toggle button.  
 
 #### To make it look pretty use a style sheet like this:  
     td {
