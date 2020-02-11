@@ -8,11 +8,7 @@ For example a click counter or a secret that lies beneath the tile.
 For Minesweeper the secret would be the kind of the tile: Is it a bomb or not.
  
 GridGame contains the following helper methods:
-
- * getTile(x,y) => get back your custom information like counter or kind
- * reveal(x: number, y: number, backgroundColor: string, text: string) => visually reveal a tile
- * setText(x: number, y: number, text: string) => only set the text of a tile, useful for markings
- * shuffleTiles() => shuffle the custom information tiles so that their final location is random
+(see end of document)
 
 # It lets you create much with just a few lines of code:
 
@@ -70,3 +66,53 @@ Play: https://typescript-lightsout.stackblitz.io/
 <img src="https://i.imgur.com/eyodOLx.png" width="220">
 
 https://stackblitz.com/edit/typescript-tetris
+
+# GridGame contains the following primary methods:
+
+## getTile(x,y)
+Get back your custom information class instance that can contains things like counter or kind
+
+## setClass(x: number, y: number, class: string)
+Set the HTML style sheet class for a tile (td).
+
+## toggleClass(x: number, y: number, class: string)
+Toggle the HTML style sheet class for a tile (td).
+
+## toggleButton(x: number, y: number)
+Convenience function.  
+Simply calls toggleClass(x,y,"off").  
+Used in many of the demos.
+
+## isPressed(x: number, y: number): boolean
+Convenience function.  
+Returns true if x or y are out of bounds (this helps some demos work better)  
+Returns true if the <td> classList contains "off".
+
+## getAllNeighbours(x: number, y: number, includeThyself=false): number[][]
+Returns an array of 8 or 9 tuples with the x,y coordinates of a tile and its surrounding neighbours.
+It starts top left and ends bottom right.
+
+## remove(x: number, y: number)
+this.getTD(x,y).style.visibility = "hidden";
+
+## removeAllNeighbours(x: number, y: number, includeThyself=false)
+calls getAllNeighboursTD(x,y,includeThyself).forEach((td) => td.style.visibility = "hidden")
+
+# GridGame contains the following [leaky abstraction](https://en.wikipedia.org/wiki/Leaky_abstraction) methods:
+
+## getTD(x: number, y: number): HTMLElement
+Get access to the underlying HTML <td> element.
+
+## getAllNeighboursTD(x: number, y: number, includeThyself=false): HTMLElement[]
+Returns an array of 8 or 9 HTMLElements containing a td and its surrounding neighbours.
+It starts top left and ends bottom right.
+
+## reveal(x: number, y: number, backgroundColor: string, text: string)
+visually reveal a tile
+
+## setText(x: number, y: number, text: string)
+only set the text of a tile, useful for markings
+
+## shuffleTiles()
+shuffle the custom information tiles so that their final location is random
+
