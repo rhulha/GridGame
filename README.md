@@ -69,6 +69,26 @@ https://stackblitz.com/edit/typescript-tetris
 
 # GridGame contains the following primary methods:
 
+### Usage:
+import { GridGame } from './GridGame';
+
+### Constructor
+var gg = new GridGame(5, 5);  
+This will create a table with 5 rows and 5 columns.  
+
+#### To make it look pretty use a style sheet like this:  
+    td {
+      width: 80px;
+      height: 80px;
+      border:5px outset orange;
+      background-color: orange;
+    }
+
+    td.off {
+      background-color: darkorange;
+      border-style: inset;
+    }
+
 ### getTile(x,y)
 Get back your custom information class instance that can contains things like counter or kind.
 
