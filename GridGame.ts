@@ -19,6 +19,10 @@ export class GridGame<T> {
       }
     }
   }
+  
+  toXY(i: number): [number, number] {
+    return [i%this.width, i/this.width|0];
+  }
 
   getTD(x: number, y: number): HTMLElement {
     return this.table.getElementsByTagName("tr")[y].getElementsByTagName("td")[x];
