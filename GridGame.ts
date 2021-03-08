@@ -139,9 +139,9 @@ export class GridGame<T> {
     }
   }
 
-  print(txt) {
-    var content = document.createTextNode("["+txt+"]");
-    var div = document.createElement('div');
+  print(...args: any[]) {
+    var content = document.createTextNode("[" + args.join(", ") + "]");
+    var div = document.createElement("div");
     div.appendChild(content);
     document.body.appendChild(div);
   }
