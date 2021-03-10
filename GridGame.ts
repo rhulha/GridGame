@@ -181,3 +181,7 @@ export function arrayEquals( array1, array2) {
     }       
     return true;
 }
+
+export const cloneArray = (items) => items.map(item => Array.isArray(item) ? cloneArray(item) : item);
+
+
