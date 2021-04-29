@@ -61,6 +61,7 @@ export class GridGame<T> {
     return this.getTD(x, y)?.classList.contains(class_);
   }
 
+  /** @deprecated use hasClass instead */
   isPressed(x: number, y: number) {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return true;
