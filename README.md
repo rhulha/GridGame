@@ -36,6 +36,12 @@ https://stackblitz.com/edit/typescript-minesweeper
 https://stackblitz.com/edit/sokoban  
 https://stackblitz.com/edit/sokoban-level-editor
 
+## Tetris
+
+<img src="https://i.imgur.com/eyodOLx.png" width="220">
+
+https://stackblitz.com/edit/typescript-tetris
+
 ## Tic-tac-toe
 
 <img src="https://i.imgur.com/pacK1im.png" height="220">
@@ -65,9 +71,4 @@ Play: https://typescript-lightsout.stackblitz.io/
 
 https://stackblitz.com/edit/conways-game-of-life-using-gridgame
 
-## Tetris (unfinished)
-
-<img src="https://i.imgur.com/eyodOLx.png" width="220">
-
-https://stackblitz.com/edit/typescript-tetris
 
