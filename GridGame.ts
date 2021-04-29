@@ -24,7 +24,15 @@ export class GridGame<T> {
     return [i%this.width, i/this.width|0];
   }
 
+  isInBounds(x: number, y: number): boolean {
+    if (x < 0 || x >= this.width || y < 0 || y >= this.height)
+      return false;
+    return true;
+  }
+
   getTD(x: number, y: number): HTMLElement {
+    if (x < 0 || x >= this.width || y < 0 || y >= this.height)
+      return null;
     return this.table.getElementsByTagName("tr")[y].getElementsByTagName("td")[x];
   }
 
@@ -32,12 +40,25 @@ export class GridGame<T> {
     return this.customTiles[x + y * this.width];
   }
 
-  toggleClass(x: number, y: number, class_: string) {
-    this.getTD(x, y).classList.toggle(class_);
+  addClass(x: number, y: number, class_: string) {
+    this.getTD(x, y)?.classList.add(class_);
+  }
+
+  removeClass(x: number, y: number, class_: string) {
+    this.getTD(x, y)?.classList.remove(class_);
   }
 
   setClass(x: number, y: number, class_: string) {
-    this.getTD(x, y).className = class_;
+    if(this.isInBounds(x, y))
+      this.getTD(x, y).className = class_;
+  }
+
+  toggleClass(x: number, y: number, class_: string) {
+    this.getTD(x, y)?.classList.toggle(class_);
+  }
+
+  hasClass(x: number, y: number, class_: string) {
+    return this.getTD(x, y)?.classList.contains(class_);
   }
 
   isPressed(x: number, y: number) {
@@ -46,6 +67,7 @@ export class GridGame<T> {
     return this.getTD(x, y).classList.contains("off");
   }
 
+  /** @deprecated use toggleClass instead */
   toggleButton(x: number, y: number) {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return;
@@ -71,10 +93,12 @@ export class GridGame<T> {
     this.getAllNeighboursTD(x,y,includeThyself).forEach((td) => td.style.visibility = "hidden");
   }
 
+  /** @deprecated use the new class changing methods instead */
   remove(x: number, y: number) {
     this.getTD(x,y).style.visibility = "hidden";
   }
 
+  /** @deprecated use the new class changing methods instead */
   setHidden(x: number, y: number, trueOrFalse: boolean) {
     if(trueOrFalse)
       this.hide(x,y);
@@ -82,21 +106,25 @@ export class GridGame<T> {
       this.show(x,y);
   }
 
+  /** @deprecated use the new class changing methods instead */
   hide(x: number, y: number) {
     var td = this.getTD( x,y );
     td.style.backgroundColor = "white";
     //td.style.borderStyle = "";
   }
 
+  /** @deprecated use the new class changing methods instead */
   show(x,y) {
     this.getTD(x, y).style.backgroundColor = null;
   }
 
+  /** @deprecated use the new class changing methods instead */
   isHidden(x,y) {
     // return this.getTD(x, y).classList.length != 0
     return this.getTD(x, y).style.backgroundColor == "white";
   }
 
+  /** @deprecated use the new class changing methods instead */
   reveal(x: number, y: number, backgroundColor: string, text: string, borderStyle = 'inset') {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return;
