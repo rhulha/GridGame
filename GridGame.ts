@@ -6,9 +6,9 @@ export class GridGame<T> {
     return father.appendChild(document.createElement(type_));
   }
 
-  constructor(public width: number, public height: number, callback?: (i: number, x:number, y:number, td: HTMLElement) => T) {
+  constructor(public width: number, public height: number, callback?: (i: number, x:number, y:number, td: HTMLElement) => T, parentElement=document.body) {
     document.body.oncontextmenu = function () { return false };
-    this.table = this.ac("table", document.body);
+    this.table = this.ac("table", parentElement);
     for (var y = 0; y < height; y++) {
       var tr = this.ac("tr", this.table);
       for (var x = 0; x < width; x++) {
