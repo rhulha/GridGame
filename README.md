@@ -20,6 +20,10 @@ GridGame contains the following helper methods:
  * Lightsout: 25 lines of code
  * Tetris: unfinished
 
+# Usage:
+npm install @java4life/gridgame  
+and then in (TypeScript) code do
+import {GridGame} from '@java4life/gridgame';
 
 # Here are some demos:
 
