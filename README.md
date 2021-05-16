@@ -21,7 +21,7 @@ GridGame contains the following helper methods:
  * Tetris: unfinished
 
 # Usage:
-`npm install @java4life/gridgame`  
+`npm install @java4life/gridgame --save`  
 and then in (TypeScript) code do  
 `import {GridGame} from '@java4life/gridgame';`  
 
