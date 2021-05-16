@@ -22,7 +22,7 @@ GridGame contains the following helper methods:
 
 # Usage:
 npm install @java4life/gridgame  
-and then in (TypeScript) code do
+and then in (TypeScript) code do  
 import {GridGame} from '@java4life/gridgame';
 
 # Here are some demos:
