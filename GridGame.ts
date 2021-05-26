@@ -5,6 +5,9 @@ export class GridGame<T> {
   ac(type_: string, father: HTMLElement): HTMLElement {
     return father.appendChild(document.createElement(type_));
   }
+  ael(type_: string, id: string, callback: EventListenerOrEventListenerObject) {
+    document.getElementById(id).addEventListener(type_, callback);
+  }
 
   constructor(public width: number, public height: number, callback?: (i: number, x:number, y:number, td: HTMLElement) => T, parentElement=document.body) {
     document.body.oncontextmenu = function () { return false };
@@ -30,7 +33,7 @@ export class GridGame<T> {
     return true;
   }
 
-  getTD(x: number, y: number): HTMLElement {
+  getTD(x: number, y: number): HTMLTableCellElement {
     if (x < 0 || x >= this.width || y < 0 || y >= this.height)
       return null;
     return this.table.getElementsByTagName("tr")[y].getElementsByTagName("td")[x];
@@ -163,7 +166,7 @@ export class GridGame<T> {
     }
   }
 
-  forEachTD(callback: (x: number, y: number, td: HTMLElement) => void) {
+  forEachTD(callback: (x: number, y: number, td: HTMLTableCellElement) => void) {
     for (var y = 0; y < this.height; y++) {
       for (var x = 0; x < this.width; x++) {
         if( callback)
@@ -190,6 +193,7 @@ export class GridGame<T> {
   }
 }
 
+// Returns a random integer between min (inclusive) and max (inclusive)
 export function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
