@@ -1,0 +1,31 @@
+export declare class GridGame<T> {
+    width: number;
+    height: number;
+    table: HTMLElement;
+    customTiles: T[];
+    ac(type_: string, father: HTMLElement): HTMLElement;
+    ael(type_: string, id: string, callback: EventListenerOrEventListenerObject): void;
+    constructor(width: number, height: number, callback?: (i: number, x: number, y: number, td: HTMLElement) => T, parentElement?: HTMLElement);
+    toXY(i: number): [number, number];
+    isInBounds(x: number, y: number): boolean;
+    getTD(x: number, y: number): HTMLTableCellElement;
+    getTile(x: number, y: number): T;
+    addClass(x: number, y: number, class_: string): void;
+    removeClass(x: number, y: number, class_: string): void;
+    setClass(x: number, y: number, class_: string): void;
+    toggleClass(x: number, y: number, class_: string): void;
+    hasClass(x: number, y: number, class_: string): boolean;
+    getAllNeighbours(x: number, y: number, includeThyself?: boolean): number[][];
+    getAllNeighboursTD(x: number, y: number, includeThyself?: boolean): HTMLElement[];
+    removeAllNeighbours(x: number, y: number, includeThyself?: boolean): void;
+    setTextForList(list: [[number, number]], text: string): void;
+    setText(x: number, y: number, text: string): void;
+    getText(x: number, y: number): string;
+    shuffleTiles(): void;
+    forEachTD(callback: (x: number, y: number, td: HTMLTableCellElement) => void): void;
+    print(...args: any[]): void;
+    onClick(callback: (x: number, y: number, button: number) => void): void;
+}
+export declare function getRandomInt(min: number, max: number): number;
+export declare function arrayEquals(array1: any, array2: any): boolean;
+export declare const cloneArray: (items: any) => any;

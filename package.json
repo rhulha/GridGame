@@ -1,6 +1,6 @@
 {
   "name": "@java4life/gridgame",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "A TypeScript class that makes it easy to create grid based games",
   "keywords": [
     "games"
@@ -12,6 +12,7 @@
   },
   "author": "Ray Hulha",
   "main": "./GridGame.ts",
+  "types": "./GridGame.d.ts",
   "dependencies": {
   },
   "devDependencies": {
