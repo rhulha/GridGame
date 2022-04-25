@@ -31,45 +31,45 @@ and then in (TypeScript) code do
 
 <img src="https://i.imgur.com/maVqzUN.png" height="220">
 
-https://stackblitz.com/edit/typescript-minesweeper
+https://stackblitz.com/edit/gridgame-minesweeper
 
 ## Sokoban
 
 ![Sokoban](https://i.imgur.com/0TZf71f.png)
 
-https://stackblitz.com/edit/sokoban  
+https://stackblitz.com/edit/gridgame-sokoban  
 https://stackblitz.com/edit/sokoban-level-editor
 
 ## Tetris
 
 <img src="https://i.imgur.com/eyodOLx.png" width="220">
 
-https://stackblitz.com/edit/typescript-tetris
+https://stackblitz.com/edit/gridgame-tetris
 
 ## Tic-tac-toe
 
 <img src="https://i.imgur.com/pacK1im.png" height="220">
 
-https://stackblitz.com/edit/typescript-tictactoe
+https://stackblitz.com/edit/gridgame-tictactoe
 
 ## Chess
 
 <img src="https://i.imgur.com/1eqYzFC.png" width="220" height="220">
 
-https://stackblitz.com/edit/typescript-nanochess
+https://stackblitz.com/edit/gridgame-nanochess
 
 ## Peg-Solitair
 
 ![Peg-Solitair](https://i.imgur.com/5lqUrNx.png)
 
-https://stackblitz.com/edit/typescript-peg-solitair
+https://stackblitz.com/edit/gridgame-peg-solitair
 
 ## Lightsout
 
 <img src="https://i.imgur.com/lqcTxaY.png" width="220" height="220">
 
-https://stackblitz.com/edit/typescript-lightsout  
-Play: https://typescript-lightsout.stackblitz.io/
+https://stackblitz.com/edit/gridgame-lightsout  
+Play: https://gridgame-lightsout.stackblitz.io/
 
 ## Conway's Game of Life
 
